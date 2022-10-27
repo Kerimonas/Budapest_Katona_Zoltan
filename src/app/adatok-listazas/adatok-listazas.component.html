@@ -1,0 +1,52 @@
+<nav class="container my-3" id="menu">
+  <div class="row text-center">
+      <div class="col-12 col-md-6 col-lg-3">
+        <a routerLink="/"
+          class="btn btn-dark my-1">
+          Kezdőoldal
+        </a>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <a routerLink="/ujadat"
+         class="btn btn-dark my-1">
+         Új felmérés felvétele
+      </a>
+      </div>
+  </div>
+</nav>
+
+<main class="container my-5">
+  <div class="row my-1 text-center">
+    <h1>Lakosság a népszámlálások alkalmával</h1>
+  </div>
+
+  <section>
+    <div class="row pt-4">
+      <div class="col-12">
+        <table *ngIf="hibaUzenet == ''" class="table table-striped">
+          <thead>
+            <th *ngFor="let fejlec of adatokFejlec"> {{fejlec}}</th>
+          </thead>
+
+
+        <tbody>
+          <tr *ngFor="let sor of adatok">     <!--adatoklistazas.component -> adatok []-->
+            <td *ngFor="let cella of adatokFejlec">
+              {{sor[cella]}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+        <div *ngIf="hibaUzenet != ''" class="alert alert-dark alert-dismissible fade show" role="alert">
+          <strong>{{hibaUzenet}}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="hibaUzenet=''"></button>
+        </div>
+      </div>
+    </div>
+
+
+
+  </section>
+</main>
